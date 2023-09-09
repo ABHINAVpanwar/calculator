@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="icon.webp" />
+    <title>Calculator</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        height: 100vh;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+      }
+
+      .container {
+        width: 400px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border: 4px solid white;
+      }
+
+      .heading {
+        color: rgb(241, 130, 38);
+        padding: 40px;
+        padding-top: 10px;
+        font-size: 46px;
+      }
+
+      .ip input {
+        margin-top: 80px;
+        padding-left: 6px;
+        width: 280px;
+        height: 60px;
+        background-color: rgb(183, 250, 142);
+        font-size: 30px;
+        letter-spacing: 6px;
+      }
+
+      .ty button {
+        margin: 20px;
+        height: 40px;
+        width: 40px;
+        font-size: xx-large;
+      }
+
+      button:hover {
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="heading">CALCULATOR</div>
+      <div class="ip">
+        <input type="text" id="in" readonly />
+        <!-- Set the input field to readonly -->
+      </div>
+      <div class="ty">
+        <button class="button" onclick="appendValue('7')">7</button>
+        <button class="button" onclick="appendValue('8')">8</button>
+        <button class="button" onclick="appendValue('9')">9</button>
+        <button class="button" onclick="appendValue('/')">÷</button>
+      </div>
+      <div class="ty">
+        <button class="button" onclick="appendValue('4')">4</button>
+        <button class="button" onclick="appendValue('5')">5</button>
+        <button class="button" onclick="appendValue('6')">6</button>
+        <button class="button" onclick="appendValue('*')">×</button>
+      </div>
+      <div class="ty">
+        <button class="button" onclick="appendValue('1')">1</button>
+        <button class="button" onclick="appendValue('2')">2</button>
+        <button class="button" onclick="appendValue('3')">3</button>
+        <button class="button" onclick="appendValue('-')">-</button>
+      </div>
+      <div class="ty">
+        <button class="button" onclick="appendValue('0')">0</button>
+        <button class="button" onclick="appendValue('.')">.</button>
+        <button class="button" onclick="appendValue('+')">+</button>
+        <button class="button" onclick="calculate()">=</button>
+      </div>
+    </div>
+
+    <script>
+      let inputField = document.getElementById("in");
+      let expression = "";
+
+      function appendValue(value) {
+        expression += value;
+        inputField.value = expression;
+      }
+
+      function calculate() {
+        try {
+          const result = eval(expression); // Using eval to calculate the expression
+          inputField.value = result;
+          expression = ""; // Clear the expression
+        } catch (error) {
+          inputField.value = "Error"; // Display "Error" for invalid expressions
+          expression = ""; // Clear the expression
+        }
+      }
+    </script>
+  </body>
+</html>
