@@ -53,6 +53,12 @@
         background-color: black;
         color: white;
       }
+      
+      #clear {
+        width: 280px;
+        height: 60px;
+        font-size: 25px;
+      }
     </style>
   </head>
 
@@ -87,6 +93,9 @@
         <button class="button" onclick="appendValue('+')">+</button>
         <button class="button" onclick="calculate()">=</button>
       </div>
+      <button id="clear" onclick="clr()">
+        CLEAR
+      </button>
     </div>
 
     <script>
@@ -102,11 +111,15 @@
         try {
           const result = eval(expression); // Using eval to calculate the expression
           inputField.value = result;
-          expression = ""; // Clear the expression
+          expression = result;
         } catch (error) {
           inputField.value = "Error"; // Display "Error" for invalid expressions
           expression = ""; // Clear the expression
         }
+      }
+      
+      function clr() {
+        inputField.value = "";
       }
     </script>
   </body>
